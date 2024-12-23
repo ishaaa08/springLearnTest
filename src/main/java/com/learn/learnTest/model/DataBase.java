@@ -1,10 +1,14 @@
 package com.learn.learnTest.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataBase {
     private String name;
     private String password;
     private String email;
     private long phone;
+    private List<String> addressList = new ArrayList<>();
     private String address;
 
     //setter
@@ -22,7 +26,16 @@ public class DataBase {
         this.phone = phone;
     }
     public void setAddress(String address) {
-        this.address = address;
+        addressList.add(address);
+    }
+
+
+    public void setAddressList(List<String> addressList) {
+        this.addressList = addressList;
+    }
+
+    public void replaceAddress(int index, String address) {
+        addressList.set(index, address);
     }
 
     //getter
@@ -38,16 +51,20 @@ public class DataBase {
     public long getPhone() {
         return this.phone;
     }
-    public String getAddress() {
-        return this.address;
+    public List<String> getAddressList() {
+        return this.addressList;
     }
+
+   public String getAddress() {
+        return this.address;
+   }
     @Override
     public String toString() {
         return "DataBase{" +
                 "name='" + getName() + '\'' +
                 ", email='" + getEmail() + '\'' +
                 ", phone=" + getPhone() +
-                ", address='" + getAddress() + '\'' +
+                ", address='" + getAddressList() + '\'' +
                 '}';
     }
 }
